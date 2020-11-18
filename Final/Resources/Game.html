@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Top Trumps</title>
+<!--Shows the title on the top bar of the web browser-->
+</head>
+
+<link rel="stylesheet" href="Style.css">
+<!--Links the CSS file "Style.css" to this file-->
+
+<script src="Cards.js"></script>
+<!--Links the javascript file to this file-->
+
+<body>
+
+<!-----------------------------------------TOP TRUMPS GAME------------------------------------------------------->
+<!--This area is where the Top Trumps game is played-->
+
+<h1>Top Trumps</h1>
+<!--Heading-->
+
+<p id="Info" align="center">Welcome to Top Trumps. The topic is on TV shows.</br>Select the difficulty of the game below and then click Begin.</p>
+<!--Info with id of 'Info'-->
+
+<script>
+difficultyLevel = 'easy';
+//Difficulty level preset in case user doesn't input it
+
+SortCategoriesTable();
+//Function called
+</script>
+
+<p id="ButtonArea" align="center"><button id="BeginButton" onclick="Shuffle()">Begin</button></p>
+<!--When clicked on, Shuffle() function is called-->
+
+<table style="width: 100%;">
+  <tr>
+    <th>PLAYER</th>
+    <th style="color: white;">00000000</th>
+    <th>OPPONENT</th>
+  </tr>
+</table>
+<!--Table displaying which areas of the game are where the Playerr's and Opponent's cards are-->
+
+<table border="1" height="400px">
+  <tr>
+    <th id="PlayerCard" style="width: 500px; color: white;">
+    <h3 id="PlayerName"></h3>
+    <img id="PlayerPicture" style="height: 150px; width: auto;" src=""></img>
+    <p><button disabled id="PlayerCat1" onclick="Click(2, 'lower')"></button></p>
+    <p><button disabled id="PlayerCat2" onclick="Click(3, 'higher')"></button></p>
+    <p><button disabled id="PlayerCat3" onclick="Click(4, 'higher')"></button></p>
+    <p><button disabled id="PlayerCat4" onclick="Click(5, 'higher')"></button></p>
+    </th>
+    <!--The top card that the Player has goes here with its info and categories to be selected-->
+    
+    <th style="width: 500px" id="Middle">
+    <p id="DifficultyLevel" align="center"><button disabled id="EasyLevel" onclick="difficultyLevel = 'easy'; document.getElementById('EasyLevel').disabled = true; document.getElementById('HardLevel').disabled = false;">Easy</button>  <button id="HardLevel" onclick="difficultyLevel = 'hard'; document.getElementById('HardLevel').disabled = true; document.getElementById('EasyLevel').disabled = false;">Hard</button></p>
+<!--Two buttons where the user selects the difficulty level of the game-->
+    </th>
+    
+    <th id="OpponentCard" style="width: 500px; color: white;">
+    <h3 id="OpponentName"></h3>
+    <img id="OpponentPicture" style="height: 150px; width: auto;" src=""></img>
+    <p><button disabled id="OpponentCat1"></button></p>
+    <p><button disabled id="OpponentCat2"></button></p>
+    <p><button disabled id="OpponentCat3"></button></p>
+    <p><button disabled id="OpponentCat4"></button></p>
+    </th>
+    <!--Where the Opponent's top card will be-->
+  </tr>
+</table>
+<!--Table that splits the three sections of the page as the player's card, opponent's card and a middle, where the two cards go when there is a matching pair-->
+
+<table style="width:100%">
+  <tr>
+    <th><span id="PlayerNumberOfCards">0</span> cards</th>
+    <th><span id="MiddleNumberOfCards">0</span> cards</th>
+    <th><span id="OpponentNumberOfCards">0</span> cards</th>
+  </tr>
+</table>
+<!--Table with no borders to show how many cards each player has-->
+
+<p align="center"><button onclick="window.location.href='Game.html'">Restart Game</button></p>
+<!--Button that refreshes the page so that the game can be replayed-->
+
+<p align="center"><b>Warning:</b> Clicking on the button above means that all actions on this page will not be saved.</p>
+<!--Warns the user that their content will be lost when refreshing this page-->
+
+</br>
+
+<hr>
+
+<!-----------------------------------------DISPLAY CARD SET------------------------------------------------------->
+<!--This area displays all the cards in the set for the user to look at before/during the game-->
+
+</br>
+
+<h1 align="center">Display Top Trump Cards</h1>
+<!--Heading-->
+
+<p align="center">To view the other cards, use the arrow buttons below.</p>
+<!--Instructions informing the user, how to view the cards-->
+
+<table border="1" height="400px">
+  <tr>
+    <th style="width: 500px;">
+    <button onclick="Slideshow('left')"><h3><=</h3></button>
+    <!--Button, when clicked, calls function-->
+    </th>
+    <!--Left Area-->
+    
+    <th id="Card" style="width: 500px; color: white;">
+    <h3 id="Name"></h3>
+    <img id="Picture" style="height: 150px; width: auto;" src=""></img>
+    <p><button disabled id="DisplayCat1"></button></p>
+    <p><button disabled id="DisplayCat2"></button></p>
+    <p><button disabled id="DisplayCat3"></button></p>
+    <p><button disabled id="DisplayCat4"></button></p>
+    <p>Card <span id="Card Number"></span> of <span id="Number of Cards"></span></p>
+    <!--Displays the card number tghe user is currently observing-->
+    </th>
+    <!--Middle Area displays the card that the user is looking at-->
+    
+    <th style="width: 500px;">
+    <button onclick="Slideshow('right')"><h3>=></h3></button>
+    <!--Button, when clicked, calls function-->
+    </th>
+    <!--Right Area-->
+  </tr>
+</table>
+<!--Table that splits the three sections of the page where only middle shows the current card that the user is looking at-->
+
+</br>
+<!--Line break-->
+
+<h2 align="center">Card Categories</h2>
+<!--Heading 2-->
+
+<table align="center" border="1">
+  <tr>
+    <th><u>Category Name</u></th>
+    <th><u>Winning Value</u></th>
+    <th><u>Highest Value Used</u></th>
+    <th><u>Lowest Value Used</u></th>
+  </tr>
+  <tr>
+    <th id="TableCat1"></th>
+    <th>Lowest</th>
+    <th id="HighestDFA"></th>
+    <th id="LowestDFA"></th>
+  </tr>
+  <tr>
+    <th id="TableCat2"></th>
+    <th>Highest</th>
+    <th id="HighestNOS"></th>
+    <th id="LowestNOS"></th>
+  </tr>
+  <tr>
+    <th id="TableCat3"></th>
+    <th>Highest</th>
+    <th id="HighestVF"></th>
+    <th id="LowestVF"></th>
+  </tr>
+  <tr>
+    <th id="TableCat4"></th>
+    <th>Highest</th>
+    <th id="HighestP"></th>
+    <th id="LowestP"></th>
+  </tr>
+</table>
+<!--Table tells the user about the categories on the cards so that they know which values are the best to choose-->
+
+
+<script src="Game Functions.js"></script>
+<script src="Display Card Set Functions.js"></script>
+<!--Links the javascript files to this file-->
+
+</body>
+</html>

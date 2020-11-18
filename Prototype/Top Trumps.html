@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Top Trumps</title>
+<!--Shows the title on the top bar of the web browser-->
+</head>
+
+<link rel="stylesheet" href="Resources/Style.css">
+<!--Links the CSS file "Resources/Style.css" to this file-->
+
+<script src="Resources/Cards.js"></script>
+<!--Links the javascript file to this file-->
+
+<script src="Resources/Functions.js"></script>
+<!--Links the javascript file to this file-->
+
+<body>
+
+<h1>Top Trumps: TV Shows</h1>
+<!--Heading-->
+
+<p id="Info" align="center">Welcome to Top Trumps. The topic is on TV shows.</br>Click on Begin.</p>
+<!--Info with id of 'Info'-->
+
+<p id="ButtonArea" align="center"><button id="BeginButton" onclick="Shuffle()">Begin</button></p>
+<!--When clicked on, Shuffle() function is called-->
+
+<table style="width:100%">
+  <tr>
+    <th>PLAYER</th>
+    <th style="color: white;">000000000</th>
+    <th>OPPONENT</th>
+  </tr>
+</table>
+<!--Table displaying which areas of the game are where the Playerr's and Opponent's cards are-->
+
+<table border="1" height="400px">
+  <tr>
+    <th id="PlayerCard" style="width: 500px; color: white;">
+    <h3 id="PlayerName"></h3>
+    <img id="PlayerPicture" style="height: 150px; width: auto;" src=""></img>
+    <p><button disabled id="PlayerDate" onclick="Click(2, 'lower')"></button></p>
+    <p><button disabled id="PlayerSeries" onclick="Click(3, 'higher')"></button></p>
+    <p><button disabled id="PlayerFigures" onclick="Click(4, 'higher')"></button></p>
+    <p><button disabled id="PlayerPopularity" onclick="Click(5, 'higher')"></button></p>
+    </th>
+    <!--The top card that the Player has goes here with its info and categories to be selected-->
+    
+    <th style="width: 500px" id="Middle"></th>
+    
+    <th id="OpponentCard" style="width: 500px; color: white;">
+    <h3 id="OpponentName"></h3>
+    <img id="OpponentPicture" style="height: 150px; width: auto;" src=""></img>
+    <p><button disabled id="OpponentDate"></button></p>
+    <p><button disabled id="OpponentSeries"></button></p>
+    <p><button disabled id="OpponentFigures"></button></p>
+    <p><button disabled id="OpponentPopularity"></button></p>
+    </th>
+    <!--Where the Opponent's top card will be-->
+  </tr>
+</table>
+<!--Table that splits the three sections of the page as the player's card, opponent's card and a middle, where the two cards go when there is a matching pair-->
+
+<table style="width:100%">
+  <tr>
+    <th><span id="PlayerNumberOfCards">0</span> cards</th>
+    <th><span id="MiddleNumberOfCards">0</span> cards</th>
+    <th><span id="OpponentNumberOfCards">0</span> cards</th>
+  </tr>
+</table>
+<!--Table with no borders to show how many cards each player has-->
+
+</body>
+</html>

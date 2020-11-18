@@ -1,0 +1,25 @@
+h1 {
+	text-align: center;
+}
+<!--All Heading 1s are aligned to centre-->
+
+h3 {
+	color: white;
+}
+<!--All Heading 3s are in white colour-->
+
+p {
+	text-align: center;
+}
+<!--All paragraphs are aligned to centre-->
+
+tr {
+	text-align: center;
+}
+<!--All text in the tables are aligned to centre-->
+
+button {
+	color: black;
+	background-color: white;
+}
+<!--All buttons have text colour in black and have a white background-->
